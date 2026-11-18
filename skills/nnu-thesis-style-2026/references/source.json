@@ -1,0 +1,33 @@
+{
+  "title": "附件4理工科学位论文格式规范（2026版）",
+  "filename": "附件4理工科学位论文格式规范（2026版）.pdf",
+  "institution": "南京师范大学",
+  "edition": "2026",
+  "provenance": "用户提供的附件；学校身份可由封面及声明页识别；未另外取得官方在线版本进行同一性核验。",
+  "sha256": "255f26e20ac794b3df5363ea091325ea9f3d53b487c42dcc4cdc27007ae757fb",
+  "size_bytes": 952665,
+  "page_count": 17,
+  "pdf_page_size_points": [595.3, 841.9],
+  "pdf_metadata_modified": "2026-01-20T14:06:14+08:00",
+  "source_access": "原始 PDF、逐页图片及原文提取保留在本地任务目录，不随公开项目发布。",
+  "license_note": "原规范和校名校徽权利归相应权利人；本项目不授予对它们的额外许可。",
+  "pages": [
+    {"number": 1, "title": "学术学位硕博封面", "printed_page": null},
+    {"number": 2, "title": "专业学位博士封面", "printed_page": null},
+    {"number": 3, "title": "专业学位硕士封面", "printed_page": null},
+    {"number": 4, "title": "同等学力硕士封面", "printed_page": null},
+    {"number": 5, "title": "独创性声明及使用授权声明", "printed_page": null},
+    {"number": 6, "title": "中文摘要", "printed_page": "I"},
+    {"number": 7, "title": "英文摘要", "printed_page": "II"},
+    {"number": 8, "title": "目录", "printed_page": "1"},
+    {"number": 9, "title": "第1章：标题层级与正文批注", "printed_page": "1"},
+    {"number": 10, "title": "第1章续页", "printed_page": "2"},
+    {"number": 11, "title": "第2章：图题", "printed_page": "3"},
+    {"number": 12, "title": "第2章：表题及正文表格", "printed_page": "4"},
+    {"number": 13, "title": "结论章", "printed_page": "5"},
+    {"number": 14, "title": "附录A及附录表格", "printed_page": "6"},
+    {"number": 15, "title": "参考文献", "printed_page": "7"},
+    {"number": 16, "title": "在读期间发表的学术论文及研究成果", "printed_page": "8"},
+    {"number": 17, "title": "致谢", "printed_page": "9"}
+  ]
+}

@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+.conda/
+.DS_Store
+.env
+.env.*
+.git-credentials
+trash/
+local-source/
+verification/
+*.pdf
+*.docx
+*.png
+*.jpg
+*.zip
+*.log

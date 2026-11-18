@@ -1,0 +1,4 @@
+interface:
+  display_name: "南师大理工科学位论文排版 · 2026"
+  short_description: "按南师大2026版来源逐条排版与核查，区分明文、样例和未规定项"
+  default_prompt: "使用 $nnu-thesis-style-2026 审查这份南京师范大学理工科学位论文的格式，按规则 ID 和来源页码列出需修改、待确认和未检查项。"
