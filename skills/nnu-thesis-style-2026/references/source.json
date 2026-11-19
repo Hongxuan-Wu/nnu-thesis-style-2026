@@ -9,7 +9,7 @@
   "page_count": 17,
   "pdf_page_size_points": [595.3, 841.9],
   "pdf_metadata_modified": "2026-01-20T14:06:14+08:00",
-  "source_access": "原始 PDF、逐页图片及原文提取保留在本地任务目录，不随公开项目发布。",
+  "source_access": "原始 PDF 按用户授权随仓库及 Skill 提供，位于本目录 source.pdf，字节未经修改。逐页渲染图片及全文转录仅保留在本地任务目录。",
   "license_note": "原规范和校名校徽权利归相应权利人；本项目不授予对它们的额外许可。",
   "pages": [
     {"number": 1, "title": "学术学位硕博封面", "printed_page": null},

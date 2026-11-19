@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check the Skill package and source coverage; this does not inspect a thesis."""
 
+import hashlib
 import json
 import re
 import sys
@@ -65,6 +66,11 @@ def check_project(root):
         raise ValueError("source manifest must index all 17 pages exactly once")
     if not re.fullmatch(r"[0-9a-f]{64}", source["sha256"]) or source["size_bytes"] <= 0:
         raise ValueError("invalid source identity")
+    source_pdf = (skill / "references/source.pdf").read_bytes()
+    if len(source_pdf) != source["size_bytes"]:
+        raise ValueError("source PDF size mismatch")
+    if hashlib.sha256(source_pdf).hexdigest() != source["sha256"]:
+        raise ValueError("source PDF SHA256 mismatch")
     rules = parse_rules(
         (skill / "references/requirements.md").read_text(encoding="utf-8"),
         source["page_count"],
@@ -101,6 +107,7 @@ def check_project(root):
         "evidence": dict(Counter(rule["evidence"] for rule in rules)),
         "source_pages": source["page_count"],
         "coverage": "17/17",
+        "source_pdf_sha256_verified": True,
         "thesis_file_checked": False,
     }
 

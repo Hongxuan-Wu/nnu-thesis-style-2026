@@ -37,6 +37,7 @@ test ! -e ~/.codex/skills/nnu-thesis-style-2026 && cp -R nnu-thesis-style-2026/s
 | 四类封面、声明、摘要、目录、三级标题、正文、图表、附录、参考文献、成果、致谢 | [全量规范台账](skills/nnu-thesis-style-2026/references/requirements.md) |
 | 原文未规定、样张观察局限及处理方式 | [边界与未决项](skills/nnu-thesis-style-2026/references/uncertainties.md) |
 | 字号、Word 行/磅单位、样式、分节及验证 | [Word 实施映射](skills/nnu-thesis-style-2026/references/word-mapping.md) |
+| 用户提供的原始格式规范附件，17 页，保持原始字节 | [原始 PDF](skills/nnu-thesis-style-2026/references/source.pdf) |
 | 附件身份、SHA256、17 页逐页索引与提取方法 | [来源记录](skills/nnu-thesis-style-2026/references/source.md) / [JSON](skills/nnu-thesis-style-2026/references/source.json) |
 | 实际论文格式审查的交付结构 | [检查报告模板](skills/nnu-thesis-style-2026/assets/audit-report.md) |
 
@@ -49,6 +50,7 @@ skills/nnu-thesis-style-2026/
   SKILL.md
   agents/openai.yaml
   references/
+    source.pdf              原始规范附件
   assets/audit-report.md
 scripts/check_project.py
 tests/test_check_project.py
@@ -69,7 +71,7 @@ python scripts/check_project.py
 python -m unittest discover -s tests -v
 ```
 
-自检检查台账行结构、规则 ID 唯一性、证据标签、来源页码范围与 17 页覆盖、元数据、Skill 基本入口及本地 Markdown 链接。单元测试包含重复规则、错误证据标签、越界页码和缺页等反例。这些结果不能证明规则解释没有语义遗漏，也不能判断任意论文的格式是否合格。
+自检读取仓库内原始 PDF 并核对其实际大小和 SHA256，同时检查台账行结构、规则 ID 唯一性、证据标签、来源页码范围与 17 页覆盖、元数据、Skill 基本入口及本地 Markdown 链接。单元测试包含源 PDF 内容或大小改变、重复规则、错误证据标签、越界页码和缺页等反例。文件摘要校验确认来源文件字节一致，不能证明规则解释没有语义遗漏，也不能判断任意论文的格式是否合格。
 
 已附 [GitHub Actions 模板](ci/check.yml)，当前未启用。首次发布使用的令牌缺少 `workflow` 权限，GitHub 拒绝上传 `.github/workflows/check.yml`。本项目因此将该文件作为普通模板保存；需要启用时，由有相应权限的维护者将模板放入 `.github/workflows/check.yml` 后提交。公开提交不包含任何已激活工作流，不能将本地测试结果表述为云端 CI 通过。
 
@@ -77,6 +79,14 @@ python -m unittest discover -s tests -v
 
 ## 来源与许可
 
-固定附件 SHA256：`255f26e20ac794b3df5363ea091325ea9f3d53b487c42dcc4cdc27007ae757fb`。原 PDF、原文全文、校徽、样张截图与用户论文均未随公开仓库发布。持有同一附件的使用者可以按物理页码逐条复核；未持有附件者可以审阅整理内容，但无法仅凭本仓库独立核验全部原文。
+原始附件已按用户授权随仓库提供：[附件4理工科学位论文格式规范（2026版）.pdf](skills/nnu-thesis-style-2026/references/source.pdf)，存放为 `skills/nnu-thesis-style-2026/references/source.pdf`，保持原始字节。读者可以直接打开 PDF，按物理页码核对规范台账。
+
+该 PDF 的 SHA256：`255f26e20ac794b3df5363ea091325ea9f3d53b487c42dcc4cdc27007ae757fb`。在项目根目录执行以下命令可重新计算并比较，也可运行项目自检自动核对：
+
+```bash
+sha256sum skills/nnu-thesis-style-2026/references/source.pdf
+```
+
+原 PDF 内的学校名称、校徽、文字及示例图片保留原有权利归属，不因随仓库提供而纳入本项目的 MIT 授权。仓库未额外提供提取的校徽素材、全文转录、样张截图或用户论文。
 
 原创 Skill 指令、脚本及整理说明按 [MIT License](LICENSE) 提供；原学校规范、名称和标识的权利边界见 [NOTICE](NOTICE)。版本变更见 [CHANGELOG.md](CHANGELOG.md)，补充或纠错方法见 [CONTRIBUTING.md](CONTRIBUTING.md)。

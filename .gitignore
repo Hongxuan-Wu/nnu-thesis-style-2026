@@ -10,6 +10,7 @@ trash/
 local-source/
 verification/
 *.pdf
+!skills/nnu-thesis-style-2026/references/source.pdf
 *.docx
 *.png
 *.jpg

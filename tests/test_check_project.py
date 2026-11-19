@@ -1,6 +1,7 @@
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,7 +20,20 @@ class SourceCoverageTests(unittest.TestCase):
     def test_actual_project(self):
         result = check_project(ROOT)
         self.assertEqual(result["source_pages"], 17)
+        self.assertTrue(result["source_pdf_sha256_verified"])
         self.assertFalse(result["thesis_file_checked"])
+
+    def test_changed_source_pdf_rejected(self):
+        content = (ROOT / "skills/nnu-thesis-style-2026/references/source.pdf").read_bytes()
+        changed = bytes([content[0] ^ 1]) + content[1:]
+        with patch("check_project.Path.read_bytes", return_value=changed):
+            with self.assertRaisesRegex(ValueError, "source PDF SHA256 mismatch"):
+                check_project(ROOT)
+
+    def test_truncated_source_pdf_rejected(self):
+        with patch("check_project.Path.read_bytes", return_value=b""):
+            with self.assertRaisesRegex(ValueError, "source PDF size mismatch"):
+                check_project(ROOT)
 
     def test_valid_table(self):
         rules = parse_rules(TABLE, 2)
